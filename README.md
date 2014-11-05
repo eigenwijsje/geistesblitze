@@ -1,6 +1,8 @@
 geistesblitze
 =============
 
+    $ git clone https://github.com/nnrcschmdt/geistesblitze.git
+
 Python 3.4 & pyvenv
 --------------------
 
