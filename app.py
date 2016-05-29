@@ -1,11 +1,11 @@
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask import Flask, render_template, redirect, flash, url_for
-from flask.ext.bootstrap import Bootstrap
-from flask.ext.login import LoginManager, UserMixin, login_required, login_user, logout_user, current_user
-from flask.ext.sqlalchemy import SQLAlchemy
-from flask.ext.wtf import Form
+from flask_bootstrap import Bootstrap
+from flask_login import LoginManager, UserMixin, login_required, login_user, logout_user, current_user
+from flask_sqlalchemy import SQLAlchemy
+from flask_wtf import Form
 from wtforms import PasswordField, StringField, SubmitField, TextAreaField, ValidationError
-from wtforms.validators import EqualTo, Required
+from wtforms.validators import EqualTo, DataRequired
 from os.path import abspath, dirname, join
 
 basedir = abspath(dirname(__file__))
@@ -13,6 +13,7 @@ basedir = abspath(dirname(__file__))
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'hard to guess string'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////{0}'.format(join(basedir, 'geistesblitze.sqlite'))
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 bootstrap = Bootstrap(app)
 db = SQLAlchemy(app)
@@ -20,6 +21,7 @@ db = SQLAlchemy(app)
 login_manager = LoginManager(app)
 login_manager.session_protection = 'strong'
 login_manager.login_view = 'login'
+
 
 @login_manager.user_loader
 def load_user(user_id):
@@ -59,11 +61,11 @@ class Idea(db.Model):
 
 
 class RegisterForm(Form):
-    username = StringField('Username', validators=[Required()])
-    password = PasswordField('Password', validators=[Required(),
+    username = StringField('Username', validators=[DataRequired()])
+    password = PasswordField('Password', validators=[DataRequired(),
                                                      EqualTo('password2',
                                                              message='Passwords must match.')])
-    password2 = PasswordField('Confirm Password', validators=[Required()])
+    password2 = PasswordField('Confirm Password', validators=[DataRequired()])
     submit = SubmitField('Register')
 
     def validate_username(self, field):
@@ -72,14 +74,14 @@ class RegisterForm(Form):
 
 
 class LoginForm(Form):
-    username = StringField('Username', validators=[Required()])
-    password = PasswordField('Password', validators=[Required()])
+    username = StringField('Username', validators=[DataRequired()])
+    password = PasswordField('Password', validators=[DataRequired()])
     submit = SubmitField('Log In')
 
 
 class AddIdeaForm(Form):
-    name = StringField('Name', validators=[Required()])
-    description = TextAreaField('Description', validators=[Required()])
+    name = StringField('Name', validators=[DataRequired()])
+    description = TextAreaField('Description', validators=[DataRequired()])
     submit = SubmitField('Save')
 
 
