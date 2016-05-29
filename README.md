@@ -3,7 +3,7 @@ geistesblitze
 
     $ git clone https://github.com/nnrcschmdt/geistesblitze.git
 
-Python 3.4 & pyvenv
+Python 3.5 & pyvenv
 --------------------
 
     $ pyvenv venv
@@ -12,10 +12,10 @@ Python 3.4 & pyvenv
     $ ./create_all.py
     $ ./run.py
 
-Python 3.4 & pyvenv, Ubuntu 14.04
+Python 3.5 & pyvenv, Ubuntu 16.04
 ---------------------------------
 
-    $ pyvenv-3.4 --without-pip venv
+    $ pyvenv-3.5 --without-pip venv
     $ source venv/bin/activate
     $ wget https://bootstrap.pypa.io/get-pip.py
     $ python get-pip.py
