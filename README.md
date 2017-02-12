@@ -1,33 +1,37 @@
-geistesblitze
+# geistesblitze
 =============
 
     $ git clone https://github.com/nnrcschmdt/geistesblitze.git
 
-Python 3.5 & pyvenv
---------------------
+Python 3.65 with pyvenv
+-----------------------
 
-    $ pyvenv venv
+    $ python3.6 -m venv venv
     $ source venv/bin/activate
     $ pip install -r requirements.txt
-    $ ./create_all.py
-    $ ./run.py
+    $ export FLASK_APP=app.py
+    $ flask create_all
+    $ flask run
 
-Python 3.5 & pyvenv, Ubuntu 16.04
----------------------------------
+Python 3.6 with pyvenv on Ubuntu (16.10)
+----------------------------------------
 
-    $ pyvenv-3.5 --without-pip venv
+    $ python3.6 -m venv --without-pip venv
     $ source venv/bin/activate
     $ wget https://bootstrap.pypa.io/get-pip.py
-    $ python get-pip.py
+    $ python3.6 get-pip.py
     $ pip install -r requirements.txt
-    $ ./create_all.py
-    $ ./run.py
+    $ export FLASK_APP=app.py
+    $ flask create_all
+    $ flask run
 
-Python 2.7 & virtualenv
------------------------
+Python 2.7 with virtualenv
+--------------------------
 
     $ virtualenv venv
     $ source venv/bin/activate
     $ pip install -r requirements.txt
-    $ ./create_all.py
-    $ ./run.py
+    $ export FLASK_APP=app.py
+    $ flask create_all
+    $ flask run
+
