@@ -3,7 +3,7 @@
 
     $ git clone https://github.com/nnrcschmdt/geistesblitze.git
 
-Python 3.65 with pyvenv
+Python 3.6 with pyvenv
 -----------------------
 
     $ python3.6 -m venv venv
