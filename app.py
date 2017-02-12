@@ -1,12 +1,13 @@
-from werkzeug.security import generate_password_hash, check_password_hash
+from os.path import abspath, dirname, join
+
 from flask import Flask, render_template, redirect, flash, url_for
 from flask_bootstrap import Bootstrap
 from flask_login import LoginManager, UserMixin, login_required, login_user, logout_user, current_user
 from flask_sqlalchemy import SQLAlchemy
-from flask_wtf import Form
+from flask_wtf import FlaskForm
+from werkzeug.security import generate_password_hash, check_password_hash
 from wtforms import PasswordField, StringField, SubmitField, TextAreaField, ValidationError
 from wtforms.validators import EqualTo, DataRequired
-from os.path import abspath, dirname, join
 
 basedir = abspath(dirname(__file__))
 
@@ -60,7 +61,7 @@ class Idea(db.Model):
         return '<Idea %r>' % self.name
 
 
-class RegisterForm(Form):
+class RegisterForm(FlaskForm):
     username = StringField('Username', validators=[DataRequired()])
     password = PasswordField('Password', validators=[DataRequired(),
                                                      EqualTo('password2',
@@ -73,13 +74,13 @@ class RegisterForm(Form):
             raise ValidationError('Username already in use.')
 
 
-class LoginForm(Form):
+class LoginForm(FlaskForm):
     username = StringField('Username', validators=[DataRequired()])
     password = PasswordField('Password', validators=[DataRequired()])
     submit = SubmitField('Log In')
 
 
-class AddIdeaForm(Form):
+class AddIdeaForm(FlaskForm):
     name = StringField('Name', validators=[DataRequired()])
     description = TextAreaField('Description', validators=[DataRequired()])
     submit = SubmitField('Save')
@@ -150,3 +151,9 @@ def add_idea():
         flash('Your idea has been saved')
         return redirect(url_for('ideas'))
     return render_template('add_idea.html', form=form)
+
+
+@app.cli.command()
+def create_all():
+    """Create all the tables"""
+    db.create_all()
