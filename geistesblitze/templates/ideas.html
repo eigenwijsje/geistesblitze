@@ -8,7 +8,7 @@
 </div>
 <div class="col-md-8">
     {% for idea in ideas %}
-        <div><a href="{{ url_for('idea', id=idea.id) }}">{{ idea.name }}</a></div>
+    <div><a href="{{ url_for('get_idea', id=idea.id) }}">{{ idea.name }}</a></div>
     {% endfor %}
-    </div>
+</div>
 {% endblock %}

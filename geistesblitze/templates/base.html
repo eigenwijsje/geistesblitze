@@ -3,15 +3,15 @@
 {% block title %}Geistesblitze{% endblock %}
 
 {% block head %}
-    {{ super() }}
-    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+{{ super() }}
+<link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
 {% endblock %}
 
 {% block navbar %}
 <div class="navbar navbar" role="navigation">
     <div class="container">
         <div class="navbar-header">
-            <a class="navbar-brand" href="{{ url_for('ideas') }}">Geistesblitze</a>
+            <h1>Geistesblitze</h1>
         </div>
         <div class="navbar-collapse collapse">
             {% if current_user.is_authenticated %}
@@ -20,12 +20,12 @@
             </ul>
             {% endif %}
             <ul class="nav navbar-nav navbar-right">
-            {% if current_user.is_authenticated %}
+                {% if current_user.is_authenticated %}
                 <li><a href="{{ url_for('logout') }}">Log Out</a></li>
-            {% else %}
+                {% else %}
                 <li><a href="{{ url_for('login') }}">Log In</a></li>
                 <li><a href="{{ url_for('register') }}">Register</a></li>
-            {% endif %}
+                {% endif %}
             </ul>
         </div>
     </div>
@@ -41,6 +41,7 @@
     </div>
     {% endfor %}
 
-    {% block page_content %}{% endblock %}
+    {% block page_content %}
+    {% endblock %}
 </div>
 {% endblock %}
