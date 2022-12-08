@@ -1,26 +1,15 @@
-geistesblitze
-=============
+# Give Up GitHub
 
-    $ git clone https://github.com/nnrcschmdt/geistesblitze.git
+This project has given up GitHub.  ([See Software Freedom Conservancy's *Give
+Up  GitHub* site for details](https://GiveUpGitHub.org))
 
-Python 3.6 with `venv`
-----------------------
+You can now find this project at
+[git.rico-schmidt.name](https://git.rico-schmidt.name/ernesto/geistesblitze2) instead.
 
-    $ python3.6 -m venv venv
-    $ source venv/bin/activate
-    $ pip install -r requirements.txt
-    $ export FLASK_APP=geistesblitze
-    $ flask create_all
-    $ flask run
+Any use of this project's code by GitHub Copilot, past or present, is done
+without my permission.  I do not consent to GitHub's use of this project's code
+in Copilot.
 
+Join us; you can [give up GitHub](https://GiveUpGitHub.org) too!
 
-Python 2.7 with `virtualenv`
-----------------------------
-
-    $ virtualenv venv
-    $ source venv/bin/activate
-    $ pip install -r requirements.txt
-    $ export FLASK_APP=app.py
-    $ flask create_all
-    $ flask run
-
+![Logo of the GiveUpGitHub campaign](https://sfconservancy.org/img/GiveUpGitHub.png)
